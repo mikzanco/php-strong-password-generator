@@ -16,6 +16,6 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <form action="password form" method="GET"></form>
 </body>
 </html>
