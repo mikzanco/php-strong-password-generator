@@ -6,26 +6,10 @@ if(!isset($_SESSION)){
     session_start();
 }
 
-
-if (isset($_GET['lenght'])) {
-    // $lenght = $_GET['lenght'];
-    // // echo generatePsw($lenght); die;
-
-    $_SESSION['pswrandom'] = generatePsw($caratteri, $lenght) ;
-    // salvare la psw in una variabile di sessione
-}
-
-
-
-
 function generatePsw($caratteri, $lenght) {
     // $password = ' aaaa ' . $lenght;
 
-    $caratteri = [
-        ['a', 'b', 'c', 'd', 'e ', 'f', 'g', 'h', 'i', 'k', 'j', 'x', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'z', 'w'],
-        [1, 2, 3, 4, 5, 6, 7, 8, 9, 0],
-        ['!', '£', '$', '%', '&', '/', '?', '^', '+', '*', '=', '#', '@', '[', ']', '{', '}', '(', ')', '<', '>']
-    ];
+    
 
     $pswrandom = '';
     if($lenght >=8 && $lenght <= 30){
@@ -46,9 +30,28 @@ function generatePsw($caratteri, $lenght) {
         }
       
         return $pswrandom;
-      
+      var_dump($pswrandom);
         
-    }
+}
+
+$caratteri = [
+    ['a', 'b', 'c', 'd', 'e ', 'f', 'g', 'h', 'i', 'k', 'j', 'x', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'z', 'w'],
+    [1, 2, 3, 4, 5, 6, 7, 8, 9, 0],
+    ['!', '£', '$', '%', '&', '/', '?', '^', '+', '*', '=', '#', '@', '[', ']', '{', '}', '(', ')', '<', '>']
+];
+
+if (isset($_GET['lenght'])) {
+    $lenght = $_GET['lenght'] ?? '';
+    //echo generatePsw($lenght); die;
+
+    $_SESSION['pswrandom'] = generatePsw($caratteri, $_GET['lenght']) ;
+    // salvare la psw in una variabile di sessione
+}
+
+
+
+
+
     //     $min_lenght = 8;
     //     $max_lenght = 30;
     //     function getArrayOfIntegers($min_lenght, $max_lenght, $lenght ){
@@ -76,6 +79,11 @@ function generatePsw($caratteri, $lenght) {
 </head>
 <body class="bg-dark text-white">
     <h1 class="pb-5">Strong password generator</h1>
+    <?php if (isset($_SESSION['pswrandom'])) : ?>
+        <h2 class="mt-2">La tua password generata è 
+            <span class="text-primary"><?php echo $_SESSION['pswrandom']; ?> </span>
+        </h2>
+    <?php endif; ?>
     <div class="container container-big text-dark">
         <div class="row d-flex flex-column jusify-content-center">
             <div class="col-md-6 offset-md-3">
@@ -98,10 +106,11 @@ function generatePsw($caratteri, $lenght) {
                                 <label class="form-check-label" for="flexCheckChecked">
                                     Caratteri uguali
                                 </label>
+                                <button class="btn btn-primary mt-3" type="submit">Genera</button>
                         </div>
                     </div>
                     <div class="col">
-
+                        
                     </div>
                 </form>
             </div>
