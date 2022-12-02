@@ -1,7 +1,41 @@
 <?php
 
-var_dump($_GET);
 
+// aprire la sessione
+session_start();
+
+if (isset($_GET['lenght'])) {
+    $name = $_GET['lenght'];
+    echo generatePsw($lenght); die;
+
+    $_SESSION['lenght'] = $_GET['lenght'];
+    // salvare la psw in una variabile di sessione
+}
+
+
+
+
+function generatePsw($caratteri, $lenght) {
+    // $password = ' aaaa ' . $lenght;
+
+    $caratteri = [
+        ['a', 'b', 'c', 'd', 'e ', 'f', 'g', 'h', 'i', 'k', 'j', 'x', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'z', 'w'],
+        [1, 2, 3, 4, 5, 6, 7, 8, 9, 0],
+        ['!', '£', '$', '%', '&', '/', '?', '^', '+', '*', '=', '#', '@', '[', ']', '{', '}', '(', ')', '<', '>']
+    ];
+
+    
+        $min_lenght = 8;
+        $max_lenght = 30;
+        function getArrayOfIntegers($min_lenght, $max_lenght, $lenght ){
+            $pswrandom = '';
+            while(count($pswrandom) < $lenght)
+        }
+    // generare la psw secondo i creteri passati
+    
+    // restituore la psw
+    return $pswrandom;
+}
 ?>
 
 
@@ -24,7 +58,7 @@ var_dump($_GET);
                 <form action="index.php" method="GET" >
                     <div class="col d-flex flex-column justify-content-center">
                         <label class="heading p-3">SCEGLI IL NUMERO DI CARATTERI da 8 a 30</label>
-                        <input name="name" type="number" class="form-comtrol w-80" >
+                        <input name="lenght" type="number" class="form-comtrol w-80" >
                     </div>
 
                     <div class="col d-flex justify-content-center mt-3 ">
