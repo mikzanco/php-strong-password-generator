@@ -2,13 +2,16 @@
 
 
 // aprire la sessione
-session_start();
+if(!isset($_SESSION)){
+    session_start();
+}
+
 
 if (isset($_GET['lenght'])) {
-    $name = $_GET['lenght'];
-    echo generatePsw($lenght); die;
+    // $lenght = $_GET['lenght'];
+    // // echo generatePsw($lenght); die;
 
-    $_SESSION['lenght'] = $_GET['lenght'];
+    $_SESSION['pswrandom'] = generatePsw($caratteri, $lenght) ;
     // salvare la psw in una variabile di sessione
 }
 
@@ -24,18 +27,39 @@ function generatePsw($caratteri, $lenght) {
         ['!', '£', '$', '%', '&', '/', '?', '^', '+', '*', '=', '#', '@', '[', ']', '{', '}', '(', ')', '<', '>']
     ];
 
-    
-        $min_lenght = 8;
-        $max_lenght = 30;
-        function getArrayOfIntegers($min_lenght, $max_lenght, $lenght ){
-            $pswrandom = '';
-            while(count($pswrandom) < $lenght)
+    $pswrandom = '';
+    if($lenght >=8 && $lenght <= 30){
+        for($i = 0; $i < $lenght; $i++) {
+
+            $random_index = rand(0, 2);
+            $list = $caratteri[$random_index];
+
+            $random_item = rand(0, count($list) - 1);
+            if (is_string($list[$random_item])) {
+                $pswrandom .= strtoupper($list[$random_item]);
+            } else {
+                $pswrandom .= $list[$random_item];
+            }
         }
-    // generare la psw secondo i creteri passati
+        } else {
+            $pswrandom = 'no';
+        }
+      
+        return $pswrandom;
+      
+        
+    }
+    //     $min_lenght = 8;
+    //     $max_lenght = 30;
+    //     function getArrayOfIntegers($min_lenght, $max_lenght, $lenght ){
+            
+    //         while(count($pswrandom) < $lenght)
+    //     }
+    // // generare la psw secondo i creteri passati
     
-    // restituore la psw
-    return $pswrandom;
-}
+    // // restituore la psw
+    // return $pswrandom;
+
 ?>
 
 
