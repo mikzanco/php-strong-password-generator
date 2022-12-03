@@ -106,11 +106,14 @@ if (isset($_GET['lenght'])) {
                                 <label class="form-check-label" for="flexCheckChecked">
                                     Caratteri uguali
                                 </label>
-                                <button class="btn btn-primary mt-3" type="submit">Genera</button>
+                                
                         </div>
                     </div>
                     <div class="col">
                         
+                    </div>
+                    <div class="col d-flex justify-content-center">
+                    <button class="btn btn-primary mt-3" type="submit">Genera</button>
                     </div>
                 </form>
             </div>
