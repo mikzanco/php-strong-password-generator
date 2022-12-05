@@ -23,9 +23,6 @@ if (isset($_GET['lenght'])) {
 }
 
 
-
-
-
     //     $min_lenght = 8;
     //     $max_lenght = 30;
     //     function getArrayOfIntegers($min_lenght, $max_lenght, $lenght ){
