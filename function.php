@@ -20,7 +20,7 @@ function generatePsw($caratteri, $lenght) {
             }
         }
         } else {
-            $pswrandom = 'no';
+            $pswrandom = 'No devi richiedere una password compresa tra gli 8 e i 30 caratteri';
         }
       
         return $pswrandom;
